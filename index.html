@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ASPIRIN — Events & Corporate Pricing (v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-elev: #141210;
+    --cream: #EFE6D2;
+    --muted: #8A857B;
+    --muted-dim: #5A554E;
+    --orange: #F26A2D;
+    --orange-soft: rgba(242, 106, 45, 0.12);
+    --divider: rgba(239, 230, 210, 0.10);
+    --max: 760px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--cream); }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 32px 80px;
+  }
+  .page { max-width: var(--max); margin: 0 auto; }
+
+  /* Header */
+  .brand-mark {
+    display: inline-block;
+    height: 56px;
+  }
+  .brand-mark img { height: 100%; width: auto; display: block; }
+  h1.hero {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px; line-height: 1; letter-spacing: 0.02em;
+    margin: 36px 0 8px;
+  }
+  .hero-sub {
+    color: var(--muted); font-size: 15px; margin: 0 0 36px;
+  }
+  hr.rule {
+    border: 0; border-top: 1px solid var(--divider); margin: 32px 0;
+  }
+
+  /* Section header */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.06em;
+    color: var(--orange); text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .section-label .sep { color: var(--muted-dim); margin: 0 10px; }
+  .section-sub {
+    color: var(--muted); font-size: 14px; margin: 0 0 24px;
+    max-width: 56ch;
+  }
+
+  /* Pricing rows */
+  .tier {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .tier-left {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .tier-hours {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; font-size: 14px;
+    color: var(--muted);
+    min-width: 64px;
+    letter-spacing: 0.01em;
+  }
+  .tier-desc {
+    color: var(--muted); font-size: 14px;
+  }
+  .tier-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px; line-height: 1;
+    color: var(--cream); letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .tier-price.link {
+    color: var(--orange); font-size: 22px;
+    border-bottom: 1px solid var(--orange);
+    cursor: pointer; padding-bottom: 2px;
+  }
+
+  /* Callouts */
+  .callout {
+    margin-top: 20px;
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+    background: rgba(255,255,255,0.015);
+  }
+  .callout .icon {
+    color: var(--orange); font-size: 18px;
+    border: 1.5px solid var(--orange); border-radius: 999px;
+    width: 24px; height: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+    font-weight: 600;
+  }
+  .callout .body { font-size: 13px; line-height: 1.55; }
+  .callout .title {
+    font-weight: 600; color: var(--cream); letter-spacing: 0.04em;
+    text-transform: uppercase; font-size: 12px; margin-bottom: 3px;
+  }
+  .callout .detail { color: var(--muted); }
+
+  .callout.np .icon { color: var(--cream); border-color: var(--cream); }
+  .callout.np .price {
+    color: var(--orange); font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; margin-left: 4px;
+  }
+
+  /* Fine print */
+  .fineprint {
+    margin-top: 36px;
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    padding: 22px 24px;
+    background: rgba(255,255,255,0.015);
+  }
+  .fineprint .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em;
+    color: var(--orange); text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .fineprint p { margin: 0 0 8px; color: var(--cream); font-size: 13px; line-height: 1.6; }
+  .fineprint p.warm { color: #B8B0A0; }
+
+  /* CTA */
+  .cta {
+    margin-top: 48px; text-align: center;
+  }
+  .cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px; letter-spacing: 0.02em;
+    margin: 0 0 18px;
+  }
+  .cta .row {
+    display: flex; justify-content: center; align-items: center;
+    gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
+  }
+  .cta a.btn {
+    display: inline-block; padding: 14px 26px;
+    background: var(--orange); color: #0A0A0A;
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    letter-spacing: 0.06em;
+    text-decoration: none; border-radius: 999px;
+    transition: transform 0.15s ease;
+  }
+  .cta a.btn:hover { transform: translateY(-1px); }
+  .cta a.link {
+    color: var(--cream); text-decoration: none;
+    font-size: 14px; border-bottom: 1px solid var(--divider);
+    padding-bottom: 3px;
+  }
+  .cta a.link:hover { border-bottom-color: var(--orange); color: var(--orange); }
+
+  /* Footer tagline */
+  .tagline {
+    margin-top: 56px;
+    text-align: center;
+    color: var(--orange);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 540px) {
+    body { padding: 40px 20px 60px; }
+    h1.hero { font-size: 42px; }
+    .tier-price { font-size: 28px; }
+    .tier-left { gap: 10px; }
+    .tier-hours { min-width: 52px; font-size: 13px; }
+    .tier-desc { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Brand mark -->
+  <div class="brand-mark"><img src="logo.svg" alt="ASPIRIN" /></div>
+
+  <h1 class="hero">PRICING LIST</h1>
+  <p class="hero-sub">DJ services for events, brand activations &amp; private affairs</p>
+
+  <hr class="rule" />
+
+  <!-- === EVENTS & CORPORATE === -->
+  <p class="section-label">// Events &amp; Corporate <span class="sep">—</span> Brand activations, weddings, 100+ guests</p>
+  <p class="section-sub">Full sound system included. Best for receptions, brand events, conferences, and weddings.</p>
+
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">1 Hour</span>
+      <span class="tier-desc">Brief appearance or short set</span>
+    </div>
+    <span class="tier-price">$800</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">2 Hours</span>
+      <span class="tier-desc">Short reception or cocktail set</span>
+    </div>
+    <span class="tier-price">$1,500</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">3 Hours</span>
+      <span class="tier-desc">Standard reception flow</span>
+    </div>
+    <span class="tier-price">$2,000</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">4 Hours</span>
+      <span class="tier-desc">Extended evening</span>
+    </div>
+    <span class="tier-price">$2,600</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">Full Build</span>
+      <span class="tier-desc">5+ hrs / multi-room, quoted to scope</span>
+    </div>
+    <span class="tier-price link">Let's talk →</span>
+  </div>
+
+  <div class="callout">
+    <span class="icon">+</span>
+    <div class="body">
+      <div class="title">Sound included</div>
+      <div class="detail">XDJ-RX3 controller · 2 Soundboks speakers · 1 JBL Partybox</div>
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- === PRIVATE PARTIES === -->
+  <p class="section-label">// Private Parties <span class="sep">—</span> House parties, birthdays, intimate gatherings</p>
+  <p class="section-sub">BYO sound system, or add a quote per booking. Best for personal one-time events under 100 guests.</p>
+
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">1 Hour</span>
+      <span class="tier-desc">Quick set or warm-up</span>
+    </div>
+    <span class="tier-price">$500</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">2 Hours</span>
+      <span class="tier-desc">Cocktail hour or house party</span>
+    </div>
+    <span class="tier-price">$950</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">3 Hours</span>
+      <span class="tier-desc">Full party flow</span>
+    </div>
+    <span class="tier-price">$1,400</span>
+  </div>
+  <div class="tier">
+    <div class="tier-left">
+      <span class="tier-hours">4 Hours</span>
+      <span class="tier-desc">Extended night</span>
+    </div>
+    <span class="tier-price">$1,800</span>
+  </div>
+
+  <!-- Non-profit demoted to callout -->
+  <div class="callout np">
+    <span class="icon">♥</span>
+    <div class="body">
+      <div class="title">Non-profit &amp; mission-driven</div>
+      <div class="detail">Flat <span class="price">$250</span> for any set length — community shows, fundraisers, queer / artist-led spaces.</div>
+    </div>
+  </div>
+
+  <!-- Fine print -->
+  <div class="fineprint">
+    <p class="label">The fine print</p>
+    <p>Private party rates exclude commuting &amp; equipment, added per booking.</p>
+    <p>Events over 100 guests include full sound at no extra charge.</p>
+    <p class="warm">Genuinely love the music but money's tight? Tell me your situation and we'll find a way. That door stays open.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Book a set</h2>
+    <div class="row">
+      <a class="btn" href="mailto:djaspirinmusic@gmail.com">Email to book</a>
+    </div>
+    <div class="row">
+      <a class="link" href="mailto:djaspirinmusic@gmail.com">djaspirinmusic@gmail.com</a>
+      <span style="color: var(--muted-dim);">·</span>
+      <a class="link" href="https://instagram.com/aspirincity">@aspirincity</a>
+    </div>
+  </div>
+
+  <p class="tagline">Trust the dose</p>
+
+</div>
+</body>
+</html>
